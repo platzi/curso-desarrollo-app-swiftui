@@ -11,6 +11,7 @@
 		36DBAC54264C8D6300996156 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DBAC53264C8D6300996156 /* ContentView.swift */; };
 		36DBAC56264C8D6400996156 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36DBAC55264C8D6400996156 /* Assets.xcassets */; };
 		36DBAC59264C8D6400996156 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36DBAC58264C8D6400996156 /* Preview Assets.xcassets */; };
+		36DE2C6F264E4CC600DCEF51 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DE2C6E264E4CC600DCEF51 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		36DBAC55264C8D6400996156 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36DBAC58264C8D6400996156 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		36DBAC5A264C8D6400996156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36DE2C6E264E4CC600DCEF51 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				36DBAC51264C8D6300996156 /* PlatziGameStreamApp.swift */,
-				36DBAC53264C8D6300996156 /* ContentView.swift */,
+				36DE2C6D264E4CA000DCEF51 /* Vistas */,
 				36DBAC55264C8D6400996156 /* Assets.xcassets */,
 				36DBAC5A264C8D6400996156 /* Info.plist */,
 				36DBAC57264C8D6400996156 /* Preview Content */,
@@ -67,6 +69,15 @@
 				36DBAC58264C8D6400996156 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		36DE2C6D264E4CA000DCEF51 /* Vistas */ = {
+			isa = PBXGroup;
+			children = (
+				36DBAC53264C8D6300996156 /* ContentView.swift */,
+				36DE2C6E264E4CC600DCEF51 /* HomeView.swift */,
+			);
+			path = Vistas;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36DE2C6F264E4CC600DCEF51 /* HomeView.swift in Sources */,
 				36DBAC54264C8D6300996156 /* ContentView.swift in Sources */,
 				36DBAC52264C8D6300996156 /* PlatziGameStreamApp.swift in Sources */,
 			);

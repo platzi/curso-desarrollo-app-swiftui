@@ -5,6 +5,13 @@
 //  Created by Juan Villalvazo on 12/05/21.
 //
 
+//
+//  ContentView.swift
+//  GameStream
+//
+//  Created by Juan Villalvazo on 28/04/21.
+//
+
 import SwiftUI
 
 
@@ -14,7 +21,9 @@ struct ContentView: View {
     
     var body: some View {
         
-        ZStack{
+        NavigationView{
+         
+            ZStack{
             
             Color(red: 18/255, green: 31/255, blue: 61/255, opacity: 100).ignoresSafeArea()
             
@@ -31,6 +40,8 @@ struct ContentView: View {
                 InicioYRegistroView()
                 
             }
+            
+            }.navigationBarHidden(true)
             
         }
     }
@@ -86,9 +97,11 @@ struct InicioSesiónView: View {
     
     @State var correo:String = ""
     @State var contraseña:String = ""
+    @State var isPantallaHomeActive:Bool = false
     
     var body: some View {
         
+     
         
         ScrollView{
             
@@ -179,6 +192,14 @@ struct InicioSesiónView: View {
                 
             }.padding(.horizontal, 42.0)
         
+        
+            //Destinos de navegación
+            NavigationLink(
+                destination: HomeView(),
+                isActive: $isPantallaHomeActive,
+                label: { EmptyView()
+                })
+        
         }
         
 
@@ -189,6 +210,8 @@ struct InicioSesiónView: View {
     func iniciarSesion() {
                 
          print("Mi correo es \(correo) y mi contraseña es \(contraseña)")
+        
+        isPantallaHomeActive.toggle()
             
     }
     
@@ -375,29 +398,27 @@ struct RegistroView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         
-        ContentView()
+     
+        Group {
+            ContentView()
+            InicioSesiónView().background(Color(red: 18/255, green: 31/255, blue: 61/255, opacity: 100).ignoresSafeArea())
+        }
         
     }
 }
 
 
 /*Branches
- //1.- Branch 01 (pantallaModulos): UI de primer parte de la pantalla de iniciar sesion (Imagen logo + botones "Iniciar sesion" y "Registro" )
+ //1.- Branch 01 (modulosPyramidOfDoom): UI de primer parte de la pantalla de iniciar sesion (Imagen logo + botones "Iniciar sesion" y "Registro" )
  
  //2.- Branch 02 (pantallaInicioSesion): UI de pantalla de Inicio de Sesión completa
  
- //3.- Branch 03 (pantallaRegistroUsuario): UI de pantalla de Inicio de Registro completa
+ //3.- Branch 03 (pantallaRegistro): UI de pantalla de Inicio de Registro completa
  
- 
+ //4.- Branch 04 (PantallaHome): UI de pantalla Home
  
  
  
  
  
  */
-
-
-
-
-
-
