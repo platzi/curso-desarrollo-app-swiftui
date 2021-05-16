@@ -33,7 +33,7 @@ struct GameView: View {
                     ScrollView {
                         videoInfo(titulo:titulo, studio: studio,calificacion:calificacion,anoPublicacion:anoPublicacion,descripcion:descripcion,tags:tags).padding(.bottom)
                         
-                        Galery(imgsUrl:imgsUrl)
+                        //Galery(imgsUrl:imgsUrl)
                         
                     }.frame( maxWidth: .infinity)
                 

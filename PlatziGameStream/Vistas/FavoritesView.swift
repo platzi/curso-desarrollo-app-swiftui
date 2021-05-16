@@ -1,16 +1,17 @@
 //
-//  GamesView.swift
+//  FavoritesView.swift
 //  PlatziGameStream
 //
-//  Created by Juan Villalvazo on 13/05/21.
+//  Created by Juan Villalvazo on 16/05/21.
 //
+ 
 
 import SwiftUI
 import Kingfisher
 
-struct GamesView:View {
+struct FavoritesView:View {
     
-    @ObservedObject var todosLosVideojuegos = ViewModel()
+    @ObservedObject var videojuegosFavoritos = FavoritesGames()
     @State var gameviewIsActive:Bool = false
     @State var url:String = ""
     @State var titulo:String = ""
@@ -20,10 +21,11 @@ struct GamesView:View {
     @State var descripcion:String = ""
     @State var tags:[String] = [""]
     @State var imgsUrl:[String] = [""]
+    @State var favoritos:[String] = ["Cuphead"]
+    @State var i:Int = 0
     
     let formaGrid = [
         
-        GridItem(.flexible()),
         GridItem(.flexible())
     ]
     
@@ -38,7 +40,7 @@ struct GamesView:View {
             VStack() {
                 
                 
-                Text("JUEGOS")
+                Text("FAVORITOS")
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
@@ -48,10 +50,13 @@ struct GamesView:View {
                     
                     LazyVGrid(columns: formaGrid, spacing: 8) {
                         
-                        
-                        ForEach(todosLosVideojuegos.gamesInfo, id: \.self) {
+                        //if juego.title.contains("Cuphead") crear arreglo con titulos de mis preferidos y luego crear nuevo arreglos de todos los juegos.info en mi model y ese usar aqui abajo.
+                        ForEach(videojuegosFavoritos.gamesInfo, id: \.self) {
                             juego in
+                           
                             
+                        
+                        
                             Button(action: {
                                 
                                 
@@ -75,12 +80,17 @@ struct GamesView:View {
                                 
                                 
                             })
+                       
+                        
+                         
+                      
+                        
                         }
                         
                     }
                     
                     
-                }
+                }.padding(.bottom,8)
                 
                 
                 
@@ -112,8 +122,8 @@ struct GamesView:View {
 
 //@ObservedObject var todosLosVideojuegos = ViewModel()
 //    static var previews: some View {
-//        
-//        
+//
+//
 //        GamesView()
 //    }
 //}
@@ -121,5 +131,6 @@ struct GamesView:View {
 
 
 //Idea para busquedas por plataforma: Se puede desactivar y activar el lazygrid con una propiedad @state al momento de pulsar una de las opciones el drawer y despues se vuelve a activar pero con otra propiedad state de
+
 
 

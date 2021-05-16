@@ -47,8 +47,7 @@ struct HomeView: View {
             
             
             
-            Text("Favoritos")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
+            FavoritesView()
                 .tabItem {
                     Image(systemName: "heart")
                     Text("Favoritos")
