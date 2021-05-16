@@ -5,73 +5,70 @@
 //  Created by Juan Villalvazo on 13/05/21.
 //
 
+
 import SwiftUI
 import AVKit
 
 struct HomeView: View {
-   
-  
+    
+    
+    
     @State var tabSeleccionado:Int = 2
     
     var body: some View {
         
- 
-               
-                TabView(selection:$tabSeleccionado) {
-                   
-                    
-                    
+        
+        
+        TabView(selection:$tabSeleccionado) {
+            
+            
+            
+            Text("Perfil")
+                .font(.system(size: 30, weight: .bold, design: .rounded))
+                .tabItem {
+                    Image(systemName: "person")
                     Text("Perfil")
-                        .font(.system(size: 30, weight: .bold, design: .rounded))
-                        .tabItem {
-                            Image(systemName: "person")
-                            Text("Perfil")
-                        }.tag(0)
-                        
-                 
-                    GamesView()
-                        .tabItem {
-                            Image(systemName: "gamecontroller")
-                            Text("Juegos")
-                        }.tag(1)
-                    
-                    
-                    Home().tabItem {
-                        Image(systemName: "house")
-                        Text("Inicio")
-                    }.tag(2)
-                    
-                    
-                   
-                    
-                   
+                }.tag(0)
+            
+            
+            GamesView()
+                .tabItem {
+                    Image(systemName: "gamecontroller")
+                    Text("Juegos")
+                }.tag(1)
+            
+            
+            Home().tabItem {
+                Image(systemName: "house")
+                Text("Inicio")
+            }.tag(2)
+            
+            
+            
+            
+            
+            Text("Favoritos")
+                .font(.system(size: 30, weight: .bold, design: .rounded))
+                .tabItem {
+                    Image(systemName: "heart")
                     Text("Favoritos")
-                        .font(.system(size: 30, weight: .bold, design: .rounded))
-                        .tabItem {
-                            Image(systemName: "heart")
-                            Text("Favoritos")
-                        }.tag(3)
-                    
-                    Text("Buscar")
-                        .font(.system(size: 30, weight: .bold, design: .rounded))
-                        .tabItem {
-                            Image(systemName: "magnifyingglass")
-                            Text("Buscar")
-                        }.tag(4)
-    
-                 
-                    
-                 
-                   
-                }
-                .accentColor(.white)
-                
-                
-                
-                
-                
-     
-         
+                }.tag(3)
+            
+           
+            
+            
+            
+            
+            
+        }
+        .accentColor(.white)
+        
+        
+        
+        
+        
+        
+        
     }
     
     
@@ -84,75 +81,46 @@ struct HomeView: View {
     }
     
     
-   
+    
 }
 
 
 
 struct Home:View {
     
-   
     
-    @State var textoBusqueda:String = ""
+    
     
     var body: some View{
         
         
         ZStack{
-        
+            
             Color("Marine").ignoresSafeArea()
             
-           
+            
             
             VStack{
                 
-               
-                
-               Image("AppLogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250).padding(.vertical, 11.0)
                 
                 
-            
-                
-                HStack {
-                   
-                    Button(action: buscar, label: {
-                        Image(systemName: "magnifyingglass").foregroundColor(textoBusqueda.isEmpty ? Color("Amarello") : Color("Dark-Cyan") )
-                    })
-                    
-                    
-                ZStack(alignment: .leading){
-                       
-                  
-                    
-                      if textoBusqueda.isEmpty { Text("Buscar un video").foregroundColor(Color(red: 174/255, green: 177/255, blue: 185/255, opacity: 1.0)) }
-                   
-                   
-                    TextField("", text: $textoBusqueda).foregroundColor(.white)
-                    
-                    }
+                Image("AppLogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250).padding(.vertical, 11.0)
                 
                 
-                
-                
-                }.padding([.top, .leading, .bottom], 11.0)
-                .background(Color("Blue-Gray"))
-                .clipShape(Capsule())
-                
-                    
                 ScrollView(showsIndicators: false){
-                SubModuloHome()
+                    SubModuloHome()
                     
                 }//.clipped()
                 
-   
+                
             }.padding(.horizontal, 18.0)
             
-
-        
+            
+            
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
         
         
-       
+        
         
         
         
@@ -160,31 +128,69 @@ struct Home:View {
         
     }
     
- 
     
-    func buscar() {
-        print("Buscando video que contenga \(textoBusqueda)")
-    }
-    
-    func navegarVideoPLayerView(videoUrl:String){
-        
-        
-        
-        
-    }
     
 }
 
 
 struct SubModuloHome:View {
-   
-    @State var url = "https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4"
-    @State var isPlayerActive = false
-    let urlVideos:[String] = ["https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256671638/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256720061/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256814567/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256705156/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256801252/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256757119/movie480.mp4"]
+    
+    @State var textoBusqueda:String = ""
+    @ObservedObject var juegoEncontrado = SearchGame()
+    @State var isGameViewActive = false
+    @State var isGameInfoEmpty = false
+    @State var url:String = ""
+    @State var titulo:String = ""
+    @State var studio:String = ""
+    @State var calificacion:String = ""
+    @State var anoPublicacion:String = ""
+    @State var descripcion:String = ""
+    @State var tags:[String] = [""]
+    @State var imgsUrl:[String] = [""]
+    
+    
+    
     
     var body: some View{
         
         VStack{
+            
+            
+            
+            HStack {
+                
+                Button(action: {watchGame(name: textoBusqueda)}, label: {
+                    Image(systemName: "magnifyingglass").foregroundColor(textoBusqueda.isEmpty ? Color("Amarello") : Color("Dark-Cyan") )
+                }).alert(isPresented: $isGameInfoEmpty) {
+                    Alert(title: Text("Error"), message: Text("No se encontro el juego"), dismissButton: .default(Text("Entendido")))
+                }
+                
+                
+                ZStack(alignment: .leading){
+                    
+                    
+                    
+                    if textoBusqueda.isEmpty { Text("Buscar un video").foregroundColor(Color(red: 174/255, green: 177/255, blue: 185/255, opacity: 1.0)) }
+                    
+                    
+                    TextField("", text: $textoBusqueda).foregroundColor(.white)
+                    
+                    
+                }
+                
+                
+                
+                
+            }.padding([.top, .leading, .bottom], 11.0)
+            .background(Color("Blue-Gray"))
+            .clipShape(Capsule())
+            
+            
+            
+            
+            
+            
+            
             
             Text("LOS MÁS POPULARES").font(.title3).foregroundColor(.white).bold().frame(minWidth: 0, maxWidth: .infinity,alignment: .leading)
                 .padding(.top)
@@ -193,15 +199,12 @@ struct SubModuloHome:View {
                 
                 
                 
-                Button(action:{ url = urlVideos[0]
-                    print("URL: \(url)")
-                    isPlayerActive = true
-                }, label: {
+                Button( action: {watchGame(name: "The Witcher 3")}, label: {
                     
                     VStack(spacing: 0) {
                         
                         Image("The Witcher 3").resizable().scaledToFill()
-                           
+                        
                         
                         Text("The Witcher 3: Wild Hunt").frame(minWidth: 0,  maxWidth: .infinity,  alignment: .leading).background(Color("Blue-Gray"))
                         
@@ -285,9 +288,7 @@ struct SubModuloHome:View {
                 
                 HStack{
                     
-                    Button(action: {url = urlVideos[1]
-                            
-                            isPlayerActive = true}, label: {
+                    Button(action: {watchGame(name: "Abzu")}, label: {
                         
                         
                         
@@ -298,9 +299,7 @@ struct SubModuloHome:View {
                         
                     })
                     
-                    Button(action: {url = urlVideos[2]
-                            
-                            isPlayerActive = true}, label: {
+                    Button(action: {watchGame(name: "Crash Bandicoot")}, label: {
                         
                         
                         
@@ -312,9 +311,7 @@ struct SubModuloHome:View {
                     })
                     
                     
-                    Button(action: {url = urlVideos[3]
-                            
-                            isPlayerActive = true}, label: {
+                    Button(action: {watchGame(name: "DEATH STRANDING")}, label: {
                         
                         
                         
@@ -336,9 +333,7 @@ struct SubModuloHome:View {
                 
                 HStack{
                     
-                    Button(action: {url = urlVideos[4]
-                            
-                            isPlayerActive = true}, label: {
+                    Button(action: {watchGame(name: "Cuphead")}, label: {
                         
                         
                         
@@ -349,9 +344,7 @@ struct SubModuloHome:View {
                         
                     })
                     
-                    Button(action: {url = urlVideos[5]
-                            
-                            isPlayerActive = true}, label: {
+                    Button(action: {watchGame(name: "Hades")}, label: {
                         
                         
                         
@@ -363,9 +356,7 @@ struct SubModuloHome:View {
                     })
                     
                     
-                    Button(action: {url = urlVideos[6]
-                            
-                            isPlayerActive = true}, label: {
+                    Button(action: {watchGame(name: "Grand Theft Auto V")}, label: {
                         
                         
                         
@@ -378,31 +369,70 @@ struct SubModuloHome:View {
                 }
             }
             
-          
+            
             // para agregar insets a scrollview
             Color.clear.frame(width: 1, height: 8, alignment: .center)
             
             
         }
-      
+        
         
         NavigationLink(
-            destination: VideoPlayer(player: AVPlayer(url:  URL(string: url)!)).frame(width: 400, height: 300)
-                ,
-            isActive: $isPlayerActive,
+            destination: GameView(url: url, titulo: titulo, studio: studio, calificacion: calificacion, anoPublicacion: anoPublicacion, descripcion: descripcion, tags: tags, imgsUrl: imgsUrl)
+            ,
+            isActive: $isGameViewActive,
             label: {
-               
+                
                 
                 EmptyView()
             })
         
         
+        
+        
     }
-
-
-
-
-
+    
+    
+    
+    
+    
+    func watchGame(name:String)  {
+        
+        juegoEncontrado.search(gameName: name)
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+            
+            
+            print("Cantidad E: \(juegoEncontrado.gameInfo.count)")
+            if juegoEncontrado.gameInfo.count == 0{
+                
+                print("No se encontro ningun juego llamado \(name)")
+                
+                isGameInfoEmpty = true
+                
+            }else{
+                
+                url = juegoEncontrado.gameInfo[0].videosUrls.mobile
+                titulo = juegoEncontrado.gameInfo[0].title
+                studio = juegoEncontrado.gameInfo[0].studio
+                calificacion = juegoEncontrado.gameInfo[0].contentRaiting
+                anoPublicacion = juegoEncontrado.gameInfo[0].publicationYear
+                descripcion = juegoEncontrado.gameInfo[0].description
+                tags = juegoEncontrado.gameInfo[0].tags
+                imgsUrl = juegoEncontrado.gameInfo[0].galleryImages
+                
+                
+                isGameViewActive = true
+            }
+        }
+        
+        
+        
+        
+    }
+    
+    
 }
 
 
