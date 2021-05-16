@@ -7,12 +7,14 @@
  
 
 import SwiftUI
-import Kingfisher
+//import Kingfisher
 
 struct FavoritesView:View {
     
-    @ObservedObject var videojuegosFavoritos = FavoritesGames()
-    @State var gameviewIsActive:Bool = false
+    @ObservedObject var juegoEncontrado = SearchGame()
+    @ObservedObject var objJuegosFavoritos = FavoritesGames()
+    @State var  juegosFavoritos:[String] = [""]
+    @State var isGameViewActive:Bool = false
     @State var url:String = ""
     @State var titulo:String = ""
     @State var studio:String = ""
@@ -21,8 +23,8 @@ struct FavoritesView:View {
     @State var descripcion:String = ""
     @State var tags:[String] = [""]
     @State var imgsUrl:[String] = [""]
-    @State var favoritos:[String] = ["Cuphead"]
-    @State var i:Int = 0
+    
+   
     
     let formaGrid = [
         
@@ -48,45 +50,26 @@ struct FavoritesView:View {
                 
                 ScrollView{
                     
-                    LazyVGrid(columns: formaGrid, spacing: 8) {
+                  // LazyVGrid(columns: formaGrid, spacing: 8)
+                    VStack{
                         
-                        //if juego.title.contains("Cuphead") crear arreglo con titulos de mis preferidos y luego crear nuevo arreglos de todos los juegos.info en mi model y ese usar aqui abajo.
-                        ForEach(videojuegosFavoritos.gamesInfo, id: \.self) {
+                        ForEach(juegosFavoritos, id: \.self) {
                             juego in
-                           
-                            
-                        
                         
                             Button(action: {
                                 
+                                watchGame(name: juego)
                                 
-                                url = juego.videosUrls.mobile
-                                titulo = juego.title
-                                studio = juego.studio
-                                calificacion = juego.contentRaiting
-                                anoPublicacion = juego.publicationYear
-                                descripcion = juego.description
-                                tags = juego.tags
-                                imgsUrl = juego.galleryImages
-                                
-                                gameviewIsActive = true
-                                //print("Pulse Imagen: \(juego.title)")
                             },  label: {
                                 
-                                KFImage(URL(string: juego.galleryImages[0])!).resizable()
-                                    .aspectRatio(contentMode: .fit)
+                                VStack {
+                                    //Image("Cuphead").resizable().aspectRatio(contentMode: .fit).padding(.horizontal,8)
+                                    Text(juego).foregroundColor(.white)
+                                }
                                 
-                                
-                                
-                                
-                            })
+                                })
                        
-                        
-                         
-                      
-                        
                         }
-                        
                     }
                     
                     
@@ -99,21 +82,65 @@ struct FavoritesView:View {
             
             NavigationLink(
                 destination: GameView(url: url, titulo: titulo, studio: studio, calificacion: calificacion, anoPublicacion: anoPublicacion, descripcion: descripcion, tags: tags, imgsUrl: imgsUrl),
-                isActive: $gameviewIsActive,
+                isActive: $isGameViewActive,
                 label: {
                     EmptyView()
                 })
             
             
-        }.navigationBarHidden(true).navigationBarBackButtonHidden(true).onAppear(perform: {
+        }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
+        .onAppear(perform: {
             
-            //Muestra la información del primer elemento del json
-            print("Primer elemento del json: \(todosLosVideojuegos.gamesInfo[0])")
-            print("Titulo del primer elemento del json: \(todosLosVideojuegos.gamesInfo[0].title)")
+            juegosFavoritos = objJuegosFavoritos.recuperarFavoritos()
+            
+            
+           print(juegosFavoritos)
+            
+          
         })
+        
+    }
+    
+    
+    
+    func watchGame(name:String)  {
+        
+        juegoEncontrado.search(gameName: name)
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+            
+            
+            print("Cantidad E: \(juegoEncontrado.gameInfo.count)")
+            if juegoEncontrado.gameInfo.count == 0{
+                
+                print("No se encontro ningun juego llamado \(name)")
+                
+               
+                
+            }else{
+                
+                url = juegoEncontrado.gameInfo[0].videosUrls.mobile
+                titulo = juegoEncontrado.gameInfo[0].title
+                studio = juegoEncontrado.gameInfo[0].studio
+                calificacion = juegoEncontrado.gameInfo[0].contentRaiting
+                anoPublicacion = juegoEncontrado.gameInfo[0].publicationYear
+                descripcion = juegoEncontrado.gameInfo[0].description
+                tags = juegoEncontrado.gameInfo[0].tags
+                imgsUrl = juegoEncontrado.gameInfo[0].galleryImages
+                
+                
+                isGameViewActive = true
+            }
+        }
+        
+        
         
         
     }
+
+    
+    
 }
 
 

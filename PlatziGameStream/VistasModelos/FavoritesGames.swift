@@ -9,80 +9,48 @@ import Foundation
 
 class FavoritesGames: ObservableObject {
  
-// 1.
-  @Published var gamesInfo = [Game]()
-  
-    @Published var favoritesGames: [Game] = []
+    // Access Shared Defaults Object
+    let userDefaults = UserDefaults.standard
+
     
-    var favoritos:[String] = ["cuphead"]
     
-    init() {
+    var canvasFavoritos:[String] = [""]
+    var favoritos:[String] = [""]
+    
+    func guardarFavorito(titulo:String) {
         
-      
-        let url = URL(string: "https://gamestream-api.herokuapp.com/api/games")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
         
-        // 2.
-        URLSession.shared.dataTask(with: request) {(data, response, error) in
-            do {
-                if let jsonData = data {
-                    // 3.
-                    print("tamañoJSON: \(jsonData)")
-                    
-                    let decodedData = try JSONDecoder().decode([Game].self, from: jsonData)
-                    
-                    print("JSONDecodificado: \(decodedData)")
-                    
-                    DispatchQueue.main.async {
-                        //Llenar propiedad games info con el arreglo de datos decodificados de nuestro json original
-                        
-                      
-                        
-                        self.gamesInfo.append(contentsOf: decodedData)
-                       
-                      
-                        
-                    }
-                    
-                    
-                    
-                    
-                    
-                } else {
-                    print("No existen datos en el json recuperado")
-                }
-            } catch {
-                print("Error: \(error)")
-            }
-        }.resume()
+        
+        //si nunca he guardado, guarda por primera vez un titulo
+        if recuperarFavoritos().count == 0 {
+            canvasFavoritos.append(titulo)
+        userDefaults.set(canvasFavoritos, forKey: "misFavoritos")
+
+        }else{
+            canvasFavoritos = favoritos
+            canvasFavoritos.append(titulo)
+            userDefaults.set(canvasFavoritos, forKey: "misFavoritos")
+        }
+        
+        
     }
     
-    func recuperarFavoritos()  {
-       
-       
+    func recuperarFavoritos() -> [String]{
+        
+        // Read/Get Array of Strings
+        
+        if userDefaults.object(forKey: "misFavoritos") != nil  {
+        favoritos = userDefaults.object(forKey: "misFavoritos") as! [String]
+            return favoritos
+        }else{
             
-            for game in gamesInfo {
-                
-                for favorito in favoritos {
-                    if  game.title.contains(favorito){
-                        
-                        favoritesGames.append(game)
-                    }
-                }
-               
+            return [""]
             
-            
-            }
-          
-          
-            
-            
-            
-    
-    
+        }
+        
+        
+        
     }
-  
     
 
 }

@@ -27,9 +27,11 @@ struct GameView: View {
              
             VStack {
                 
-                video(url: url).frame( height: 300)
-                
-                
+          
+                    
+                    video(url: url).frame( height: 300)
+                    
+          
                     ScrollView {
                         videoInfo(titulo:titulo, studio: studio,calificacion:calificacion,anoPublicacion:anoPublicacion,descripcion:descripcion,tags:tags).padding(.bottom)
                         
@@ -62,6 +64,7 @@ struct video:View {
 
 struct videoInfo:View {
     
+    var favoritosVM = FavoritesGames()
     var titulo:String
     var studio:String
     var calificacion:String
@@ -74,7 +77,18 @@ struct videoInfo:View {
         
         
         VStack(alignment: .leading){
-            Text("\(titulo)").foregroundColor(.white).font(.largeTitle).padding(.leading)
+            
+            HStack {
+                Text("\(titulo)").foregroundColor(.white).font(.largeTitle).padding(.leading)
+                
+                Spacer()
+                
+                Button(action: {favoritosVM.guardarFavorito(titulo: titulo)}, label: {
+                    Image(systemName: "heart.fill").resizable().aspectRatio(contentMode: .fit).frame(width: 18, height: 18).foregroundColor(.white).padding()
+                })
+            
+            
+            }
             
             HStack{
                 
@@ -144,7 +158,6 @@ struct Galery:View {
         
     }
 }
-
 
 
 struct extraViews:View {
