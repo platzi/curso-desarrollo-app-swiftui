@@ -120,6 +120,5 @@ struct GamesView:View {
 
 
 
-//Idea para busquedas por plataforma: Se puede desactivar y activar el lazygrid con una propiedad @state al momento de pulsar una de las opciones el drawer y despues se vuelve a activar pero con otra propiedad state de
 
 

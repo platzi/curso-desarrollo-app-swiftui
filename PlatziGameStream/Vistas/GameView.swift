@@ -25,24 +25,24 @@ struct GameView: View {
     var body: some View {
         ZStack{
             Color("Marine").ignoresSafeArea()
-             
+            
             VStack {
                 
-          
+                
+                
+                video(url: url).frame( height: 300)
+                
+                
+                ScrollView {
+                    videoInfo(titulo:titulo, studio: studio,calificacion:calificacion,anoPublicacion:anoPublicacion,descripcion:descripcion,tags:tags, imgsUrl: imgsUrl).padding(.bottom)
                     
-                    video(url: url).frame( height: 300)
+                    Galery(imgsUrl:imgsUrl)
                     
-          
-                    ScrollView {
-                        videoInfo(titulo:titulo, studio: studio,calificacion:calificacion,anoPublicacion:anoPublicacion,descripcion:descripcion,tags:tags, imgsUrl: imgsUrl).padding(.bottom)
-                        
-                        //Galery(imgsUrl:imgsUrl)
-                        
-                    }.frame( maxWidth: .infinity)
+                }.frame( maxWidth: .infinity)
                 
             }
             
-           
+            
             
         }
     }
@@ -50,7 +50,7 @@ struct GameView: View {
 
 
 struct video:View {
-   
+    
     var url:String
     
     var body: some View{
@@ -85,14 +85,14 @@ struct videoInfo:View {
                 
                 Spacer()
                 
-                Button(action: {favoritosVM.guardarFavorito(title:titulo,titulo:imgsUrl[0] )
+                Button(action: {favoritosVM.guardarFavorito(titulo:titulo)
                         isGameSaved = true}, label: {
-                    Image(systemName: "heart.fill").resizable().aspectRatio(contentMode: .fit).frame(width: 18, height: 18).foregroundColor(.white).padding()
-                }).alert(isPresented: $isGameSaved) {
-                    Alert(title: Text("Guardado"), message: Text("El juego \(titulo) se guardo exitosamente"), dismissButton: .default(Text("Entendido")))
-                }
-            
-            
+                            Image(systemName: "heart.fill").resizable().aspectRatio(contentMode: .fit).frame(width: 18, height: 18).foregroundColor(.white).padding()
+                        }).alert(isPresented: $isGameSaved) {
+                            Alert(title: Text("Guardado"), message: Text("El juego \(titulo) se guardo exitosamente"), dismissButton: .default(Text("Entendido")))
+                        }
+                
+                
             }
             
             HStack{
@@ -112,10 +112,10 @@ struct videoInfo:View {
                 
                 ForEach(tags, id: \.self) { tag in
                     Text("#\(tag)").foregroundColor(.white).font(.caption).padding(.top,4).padding(.leading)
-                
+                    
                 }
             }
-
+            
             
         }.frame( maxWidth: .infinity,alignment: .leading)
         
@@ -138,25 +138,25 @@ struct Galery:View {
             
             
             Text("GALERÍA").foregroundColor(.white).font(.title).padding(.leading)
-
+            
             ScrollView(.horizontal) {
                 LazyHGrid(rows: formaGrid, spacing: 8) {
+                    
+                    
+                    ForEach(imgsUrl, id: \.self) {
+                        imgUrl in
                         
                         
-                        ForEach(imgsUrl, id: \.self) {
-                            imgUrl in
-                            
-                                
-                                KFImage(URL(string: imgUrl)).resizable()
-                                    .aspectRatio(contentMode: .fill)
-                              
+                        KFImage(URL(string: imgUrl)).resizable()
+                            .aspectRatio(contentMode: .fill)
                         
-                        }
                         
+                    }
+                    
                 }
             }.frame( height: 180)
             
-           extraViews()
+            extraViews()
             
             
         }.frame( maxWidth: .infinity,alignment: .leading)
@@ -169,43 +169,12 @@ struct extraViews:View {
     var body: some View{
         
         VStack(alignment: .leading){
-        
+            
             Text("COMENTARIOS").foregroundColor(.white).font(.title).padding(.leading)
-       
+            
             
             VStack{
-                    
-                    ZStack{
-                        
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color("Blue-Gray"))
-                            .padding(.horizontal, 8.0)
-                        
-                        VStack(alignment: .leading) {
-                            HStack{
-                                
-                                Image( "perfilEjemplo").resizable().aspectRatio(contentMode: .fit).frame(width: 64, height: 64).accentColor(.white).padding([.top, .leading])
-                               
-                                VStack(alignment: .leading) {
-                                    Text("Lorem").bold().foregroundColor(Color.white)
-                                    
-                                    Text("Hace 18 horas").foregroundColor(Color.white)
-                                }
-                                
-                                
-                            }
-                        
-                        
-                           
-                            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor, mauris lorem.  ").foregroundColor(.white).padding(.leading,8)
-                                .frame( height: 80)
-                              
-                        
-                        }
-                        
-            
-                    }
-                    
+                
                 ZStack{
                     
                     RoundedRectangle(cornerRadius: 8)
@@ -216,7 +185,38 @@ struct extraViews:View {
                         HStack{
                             
                             Image( "perfilEjemplo").resizable().aspectRatio(contentMode: .fit).frame(width: 64, height: 64).accentColor(.white).padding([.top, .leading])
-                           
+                            
+                            VStack(alignment: .leading) {
+                                Text("Lorem").bold().foregroundColor(Color.white)
+                                
+                                Text("Hace 18 horas").foregroundColor(Color.white)
+                            }
+                            
+                            
+                        }
+                        
+                        
+                        
+                        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum auctor, mauris lorem.  ").foregroundColor(.white).padding(.leading,8)
+                            .frame( height: 80)
+                        
+                        
+                    }
+                    
+                    
+                }
+                
+                ZStack{
+                    
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color("Blue-Gray"))
+                        .padding(.horizontal, 8.0)
+                    
+                    VStack(alignment: .leading) {
+                        HStack{
+                            
+                            Image( "perfilEjemplo").resizable().aspectRatio(contentMode: .fit).frame(width: 64, height: 64).accentColor(.white).padding([.top, .leading])
+                            
                             VStack(alignment: .leading) {
                                 Text("Ipsum").bold().foregroundColor(Color.white)
                                 
@@ -225,54 +225,54 @@ struct extraViews:View {
                             
                             
                         }
-                    
-                    
-                       Text(" Vestibulum auctor, mauris lorem molestie nibh.Lorem ipsum consectetur adipiscing elit.    ").foregroundColor(.white)
-                                    .padding(.horizontal, 8.0)
-                        .frame( height: 80)
-                            
-                                   
-                    
+                        
+                        
+                        Text(" Vestibulum auctor, mauris lorem molestie nibh.Lorem ipsum consectetur adipiscing elit.    ").foregroundColor(.white)
+                            .padding(.horizontal, 8.0)
+                            .frame( height: 80)
+                        
+                        
+                        
                     }
                     
-        
+                    
                 }
                 
-               
-               
+                
+                
             }
-        
-      
-        Text("JUEGOS SIMILARES").foregroundColor(.white).font(.title).padding(.leading)
-        
-        ScrollView(.horizontal,showsIndicators: false){
             
             
-            HStack{
+            Text("JUEGOS SIMILARES").foregroundColor(.white).font(.title).padding(.leading)
+            
+            ScrollView(.horizontal,showsIndicators: false){
                 
-            
+                
+                HStack{
+                    
+                    
                     Image("Abzu").resizable().scaledToFit().frame(width: 240, height: 135)
-            
-                
-            
+                    
+                    
+                    
                     
                     Image("Crash Bandicoot").resizable().scaledToFit().frame(width: 240, height: 135)
-          
-                
-               
+                    
+                    
+                    
                     
                     Image("DEATH STRANDING").resizable().scaledToFit().frame(width: 240, height: 135)
                     
                     
                     
                     
+                }
             }
-        }
-        
-        
-        
- 
-        
+            
+            
+            
+            
+            
         }
         
     }
@@ -283,10 +283,10 @@ struct extraViews:View {
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         GameView(url: "ejemplo",titulo:"Sonic The Hedgehog"
-       ,studio:"Sega"
-        , calificacion:"E+"
-        ,anoPublicacion:"1991"
-        ,descripcion:"Juego de Sega Genesis publicado en 1991 con más de 40 millones de copias vendidas actualmente"
+                 ,studio:"Sega"
+                 , calificacion:"E+"
+                 ,anoPublicacion:"1991"
+                 ,descripcion:"Juego de Sega Genesis publicado en 1991 con más de 40 millones de copias vendidas actualmente"
                  , tags:["plataformas","mascota"], imgsUrl: [ "https://cdn.cloudflare.steamstatic.com/steam/apps/268910/ss_615455299355eaf552c638c7ea5b24a8b46e02dd.600x338.jpg","https://cdn.cloudflare.steamstatic.com/steam/apps/268910/ss_615455299355eaf552c638c7ea5b24a8b46e02dd.600x338.jpg","https://cdn.cloudflare.steamstatic.com/steam/apps/268910/ss_615455299355eaf552c638c7ea5b24a8b46e02dd.600x338.jpg"])
         
         extraViews()

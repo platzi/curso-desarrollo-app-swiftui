@@ -4,17 +4,16 @@
 //
 //  Created by Juan Villalvazo on 16/05/21.
 //
- 
+
 
 import SwiftUI
-import Kingfisher
+
 
 struct FavoritesView:View {
     
     @ObservedObject var juegoEncontrado = SearchGame()
     @ObservedObject var objJuegosFavoritos = FavoritesGames()
     @State var  titulosJuegosFavoritos:[String] = [""]
-    @State var  juegosFavoritos:[String] = [""]
     @State var isGameViewActive:Bool = false
     @State var url:String = ""
     @State var titulo:String = ""
@@ -25,12 +24,8 @@ struct FavoritesView:View {
     @State var tags:[String] = [""]
     @State var imgsUrl:[String] = [""]
     
-   
     
-    let formaGrid = [
-        
-        GridItem(.flexible())
-    ]
+    
     
     
     var body: some View{
@@ -51,48 +46,32 @@ struct FavoritesView:View {
                 
                 ScrollView{
                     
-                  // LazyVGrid(columns: formaGrid, spacing: 8)
-                    VStack{
+                    
+                    VStack(alignment:.leading){
                         
                         ForEach(titulosJuegosFavoritos, id: \.self) {
                             tituloJuego in
-                        
+                            
                             Button(action: {
                                 
                                 watchGame(name: tituloJuego)
                                 
                             },  label: {
                                 
-                                VStack {
-                                   
+                                HStack {
+                                    
                                     Text(tituloJuego).foregroundColor(.white)
                                     
+                                    Spacer()
                                     
+                                    Image(systemName: "play.fill").padding(.trailing,10)
                                 }
                                 
-                                })
-                       
+                            }).padding(.bottom,8)
+                            
                         }
                         
-                        ForEach(juegosFavoritos, id: \.self) {
-                            imgJuego in
-
-                            Button(action: {
-
-                             print("pulsaste la imagen \(imgJuego)")
-
-                            },  label: {
-
-                                VStack {
-
-
-                                    KFImage(URL(string: imgJuego)).resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                }
-
-                                })
-
-                        }
+                        
                     }
                     
                     
@@ -116,12 +95,11 @@ struct FavoritesView:View {
             
             titulosJuegosFavoritos = objJuegosFavoritos.recuperarTitulosFavoritos()
             
-            juegosFavoritos = objJuegosFavoritos.recuperarFavoritos()
             
-           print(titulosJuegosFavoritos)
-           print(juegosFavoritos)
+            print(titulosJuegosFavoritos)
             
-          
+            
+            
         })
         
     }
@@ -141,7 +119,7 @@ struct FavoritesView:View {
                 
                 print("No se encontro ningun juego llamado \(name)")
                 
-               
+                
                 
             }else{
                 
@@ -163,26 +141,25 @@ struct FavoritesView:View {
         
         
     }
-
+    
     
     
 }
 
 
 
-//struct GamesView_Previews: PreviewProvider {
+struct FavoritesView_Previews: PreviewProvider {
 
-//@ObservedObject var todosLosVideojuegos = ViewModel()
-//    static var previews: some View {
-//
-//
-//        GamesView()
-//    }
-//}
+@ObservedObject var todosLosVideojuegos = ViewModel()
+    static var previews: some View {
 
 
+        FavoritesView()
+    }
+}
 
-//Idea para busquedas por plataforma: Se puede desactivar y activar el lazygrid con una propiedad @state al momento de pulsar una de las opciones el drawer y despues se vuelve a activar pero con otra propiedad state de
+
+
 
 
 
