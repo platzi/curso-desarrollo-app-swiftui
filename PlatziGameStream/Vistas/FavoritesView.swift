@@ -7,12 +7,13 @@
  
 
 import SwiftUI
-//import Kingfisher
+import Kingfisher
 
 struct FavoritesView:View {
     
     @ObservedObject var juegoEncontrado = SearchGame()
     @ObservedObject var objJuegosFavoritos = FavoritesGames()
+    @State var  titulosJuegosFavoritos:[String] = [""]
     @State var  juegosFavoritos:[String] = [""]
     @State var isGameViewActive:Bool = false
     @State var url:String = ""
@@ -53,22 +54,44 @@ struct FavoritesView:View {
                   // LazyVGrid(columns: formaGrid, spacing: 8)
                     VStack{
                         
-                        ForEach(juegosFavoritos, id: \.self) {
-                            juego in
+                        ForEach(titulosJuegosFavoritos, id: \.self) {
+                            tituloJuego in
                         
                             Button(action: {
                                 
-                                watchGame(name: juego)
+                                watchGame(name: tituloJuego)
                                 
                             },  label: {
                                 
                                 VStack {
-                                    //Image("Cuphead").resizable().aspectRatio(contentMode: .fit).padding(.horizontal,8)
-                                    Text(juego).foregroundColor(.white)
+                                   
+                                    Text(tituloJuego).foregroundColor(.white)
+                                    
+                                    
                                 }
                                 
                                 })
                        
+                        }
+                        
+                        ForEach(juegosFavoritos, id: \.self) {
+                            imgJuego in
+
+                            Button(action: {
+
+                             print("pulsaste la imagen \(imgJuego)")
+
+                            },  label: {
+
+                                VStack {
+
+
+                                    KFImage(URL(string: imgJuego)).resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                }
+
+                                })
+
                         }
                     }
                     
@@ -91,9 +114,11 @@ struct FavoritesView:View {
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
         .onAppear(perform: {
             
+            titulosJuegosFavoritos = objJuegosFavoritos.recuperarTitulosFavoritos()
+            
             juegosFavoritos = objJuegosFavoritos.recuperarFavoritos()
             
-            
+           print(titulosJuegosFavoritos)
            print(juegosFavoritos)
             
           

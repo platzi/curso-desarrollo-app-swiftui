@@ -9,6 +9,7 @@ import SwiftUI
 import AVKit
 import Kingfisher
 
+
 struct GameView: View {
     
     var url:String
@@ -33,7 +34,7 @@ struct GameView: View {
                     
           
                     ScrollView {
-                        videoInfo(titulo:titulo, studio: studio,calificacion:calificacion,anoPublicacion:anoPublicacion,descripcion:descripcion,tags:tags).padding(.bottom)
+                        videoInfo(titulo:titulo, studio: studio,calificacion:calificacion,anoPublicacion:anoPublicacion,descripcion:descripcion,tags:tags, imgsUrl: imgsUrl).padding(.bottom)
                         
                         //Galery(imgsUrl:imgsUrl)
                         
@@ -65,13 +66,14 @@ struct video:View {
 struct videoInfo:View {
     
     var favoritosVM = FavoritesGames()
+    @State var isGameSaved = false
     var titulo:String
     var studio:String
     var calificacion:String
     var anoPublicacion:String
     var descripcion:String
     var tags:[String]
-    
+    var imgsUrl:[String]
     
     var body: some View{
         
@@ -83,9 +85,12 @@ struct videoInfo:View {
                 
                 Spacer()
                 
-                Button(action: {favoritosVM.guardarFavorito(titulo: titulo)}, label: {
+                Button(action: {favoritosVM.guardarFavorito(title:titulo,titulo:imgsUrl[0] )
+                        isGameSaved = true}, label: {
                     Image(systemName: "heart.fill").resizable().aspectRatio(contentMode: .fit).frame(width: 18, height: 18).foregroundColor(.white).padding()
-                })
+                }).alert(isPresented: $isGameSaved) {
+                    Alert(title: Text("Guardado"), message: Text("El juego \(titulo) se guardo exitosamente"), dismissButton: .default(Text("Entendido")))
+                }
             
             
             }

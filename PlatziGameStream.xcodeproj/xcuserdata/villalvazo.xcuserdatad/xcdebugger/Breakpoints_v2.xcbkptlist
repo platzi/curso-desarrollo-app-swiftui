@@ -30,9 +30,9 @@
             filePath = "PlatziGameStream/VistasModelos/FavoritesGames.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "guardarFavorito(titulo:)"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "guardarFavorito(title:titulo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -46,9 +46,9 @@
             filePath = "PlatziGameStream/VistasModelos/FavoritesGames.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "guardarFavorito(titulo:)"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "guardarFavorito(title:titulo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -62,9 +62,9 @@
             filePath = "PlatziGameStream/VistasModelos/FavoritesGames.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "guardarFavorito(titulo:)"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "guardarFavorito(title:titulo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -78,8 +78,8 @@
             filePath = "PlatziGameStream/VistasModelos/FavoritesGames.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "recuperarFavoritos()"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "PlatziGameStream/Vistas/FavoritesView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
