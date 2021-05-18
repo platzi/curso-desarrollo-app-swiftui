@@ -65,7 +65,7 @@ struct video:View {
 
 struct videoInfo:View {
     
-    var favoritosVM = FavoritesGames()
+    
     @State var isGameSaved = false
     var titulo:String
     var studio:String
@@ -85,7 +85,7 @@ struct videoInfo:View {
                 
                 Spacer()
                 
-                Button(action: {favoritosVM.guardarFavorito(titulo:titulo)
+                Button(action: {
                         isGameSaved = true}, label: {
                             Image(systemName: "heart.fill").resizable().aspectRatio(contentMode: .fit).frame(width: 18, height: 18).foregroundColor(.white).padding()
                         }).alert(isPresented: $isGameSaved) {

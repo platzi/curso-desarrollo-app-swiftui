@@ -7,13 +7,12 @@
 
 
 import SwiftUI
-
+import AVKit
 
 struct FavoritesView:View {
     
-    @ObservedObject var juegoEncontrado = SearchGame()
-    @ObservedObject var objJuegosFavoritos = FavoritesGames()
-    @State var  titulosJuegosFavoritos:[String] = [""]
+    @ObservedObject var todosLosVideojuegos = ViewModel()
+
     @State var isGameViewActive:Bool = false
     @State var url:String = ""
     @State var titulo:String = ""
@@ -42,37 +41,37 @@ struct FavoritesView:View {
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
-                    .padding(.vertical, 9.0)
+                    .padding(.bottom, 9.0)
                 
                 ScrollView{
                     
                     
-                    VStack(alignment:.leading){
+                   
                         
-                        ForEach(titulosJuegosFavoritos, id: \.self) {
-                            tituloJuego in
+                        ForEach(todosLosVideojuegos.gamesInfo, id: \.self) { juego in
                             
-                            Button(action: {
+                           
+                         
+                            VStack(spacing: 0){
                                 
-                                watchGame(name: tituloJuego)
-                                
-                            },  label: {
-                                
-                                HStack {
+                                //Bug con VideoPlayer previene esconder barra de navegacion
+                                VideoPlayer(player: AVPlayer(url: URL(string:  juego.videosUrls.mobile)!)).frame( height: 300)
                                     
-                                    Text(tituloJuego).foregroundColor(.white)
                                     
-                                    Spacer()
-                                    
-                                    Image(systemName: "play.fill").padding(.trailing,10)
-                                }
+                                    Text("\(juego.title)").foregroundColor(Color.white)
+                                        .padding()
+                                        .frame( maxWidth: .infinity,alignment: .leading)
+                                        .background(Color("Blue-Gray"))
+                                        .clipShape(RoundedRectangle(cornerRadius: 3.0))
                                 
-                            }).padding(.bottom,8)
+                            }
                             
+                        
+                        
                         }
                         
-                        
-                    }
+                 
+                    
                     
                     
                 }.padding(.bottom,8)
@@ -82,65 +81,20 @@ struct FavoritesView:View {
             }.padding(.horizontal,6)
             
             
-            NavigationLink(
-                destination: GameView(url: url, titulo: titulo, studio: studio, calificacion: calificacion, anoPublicacion: anoPublicacion, descripcion: descripcion, tags: tags, imgsUrl: imgsUrl),
-                isActive: $isGameViewActive,
-                label: {
-                    EmptyView()
-                })
-            
-            
-        }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
-        .onAppear(perform: {
-            
-            titulosJuegosFavoritos = objJuegosFavoritos.recuperarTitulosFavoritos()
-            
-            
-            print(titulosJuegosFavoritos)
             
             
             
-        })
-        
-    }
-    
-    
-    
-    func watchGame(name:String)  {
-        
-        juegoEncontrado.search(gameName: name)
-        
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
-            
-            
-            print("Cantidad E: \(juegoEncontrado.gameInfo.count)")
-            if juegoEncontrado.gameInfo.count == 0{
-                
-                print("No se encontro ningun juego llamado \(name)")
-                
-                
-                
-            }else{
-                
-                url = juegoEncontrado.gameInfo[0].videosUrls.mobile
-                titulo = juegoEncontrado.gameInfo[0].title
-                studio = juegoEncontrado.gameInfo[0].studio
-                calificacion = juegoEncontrado.gameInfo[0].contentRaiting
-                anoPublicacion = juegoEncontrado.gameInfo[0].publicationYear
-                descripcion = juegoEncontrado.gameInfo[0].description
-                tags = juegoEncontrado.gameInfo[0].tags
-                imgsUrl = juegoEncontrado.gameInfo[0].galleryImages
-                
-                
-                isGameViewActive = true
-            }
-        }
+        }.navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
         
         
         
         
     }
+    
+    
+    
+   
     
     
     

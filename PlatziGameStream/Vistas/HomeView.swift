@@ -24,7 +24,7 @@ struct HomeView: View {
             
             
             Text("Perfil")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
+                .font(.system(size: 30, weight: .bold, design: .rounded)).navigationBarHidden(true).navigationBarBackButtonHidden(true)
                 .tabItem {
                     Image(systemName: "person")
                     Text("Perfil")
@@ -43,9 +43,7 @@ struct HomeView: View {
                 Text("Inicio")
             }.tag(2)
             
-            
-            
-            
+ 
             
             FavoritesView()
                 .tabItem {
@@ -109,7 +107,7 @@ struct Home:View {
                 ScrollView(showsIndicators: false){
                     SubModuloHome()
                     
-                }//.clipped()
+                }
                 
                 
             }.padding(.horizontal, 18.0)
