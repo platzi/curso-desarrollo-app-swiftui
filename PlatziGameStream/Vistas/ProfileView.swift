@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     
     
-    
+    @State var nombreUsuario:String = "Lorem"
     
     var body: some View {
        
@@ -30,7 +30,7 @@ struct ProfileView: View {
                           
                                 Image("perfilEjemplo").resizable().aspectRatio(contentMode: .fit).frame(width: 80.0, height: 80.0)
                
-                        Text("Lorem")
+                        Text(nombreUsuario)
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
                             
@@ -49,7 +49,27 @@ struct ProfileView: View {
             }
             
          
-        }
+        } .onAppear(
+            
+            perform: {
+                
+               print("revisando si tengo datos en user defaults")
+                
+                if UserDefaults.standard.object(forKey: "datosUsuario") != nil {
+                    
+                    nombreUsuario = UserDefaults.standard.stringArray(forKey: "datosUsuario")![2]
+                    print("Si encontre nombre de usuario \(nombreUsuario)")
+                }else{
+                    
+                    print("no encontre nombre de usuario guardado en objeto global de userdefaults")
+                    
+                }
+                
+            }
+        
+        
+        )
+       
    }
     
 }

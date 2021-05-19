@@ -208,10 +208,20 @@ struct InicioSesiónView: View {
     
     
     func iniciarSesion() {
-                
+        
+       let objetoDatosUsuario = SaveData()
+        
          print("Mi correo es \(correo) y mi contraseña es \(contraseña)")
         
-        isPantallaHomeActive.toggle()
+        if objetoDatosUsuario.validar(correo: correo, contrasena: contraseña){
+            isPantallaHomeActive.toggle()
+        }else{
+            //isPantallaHomeActive.toggle()
+            print("Tus datos son incorrectos")
+            
+        }
+        
+        
             
     }
     
@@ -389,7 +399,21 @@ struct RegistroView: View {
         
         print("Me registro con el correo \(correo), la contraseña \(contraseña) y confirmación de contraseña \(confirmacionContraseña)")
     
-        //Logica de validación
+        //validación contraseña
+        if contraseña == confirmacionContraseña{
+          
+            let objetoActualizadorDatos = SaveData()
+            
+            let resultado = objetoActualizadorDatos.guardarDatos(correo: correo, contrasena: contraseña, nombre: "")
+            
+            print("Se guardaron los datos con exito?: \(resultado)")
+            
+        }else{
+            
+            print("Contraseñas diferentes, vuelve a intentarlo")
+        }
+        
+        
         
     }
     
