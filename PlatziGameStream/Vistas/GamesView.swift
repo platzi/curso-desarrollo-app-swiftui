@@ -42,7 +42,7 @@ struct GamesView:View {
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
-                    .padding(.vertical, 9.0)
+                    .padding(EdgeInsets(top: 16, leading: 0, bottom: 64, trailing: 0))
                 
                 ScrollView{
                     
@@ -65,11 +65,14 @@ struct GamesView:View {
                                 imgsUrl = juego.galleryImages
                                 
                                 gameviewIsActive = true
-                                //print("Pulse Imagen: \(juego.title)")
+                                
                             },  label: {
                                 
                                 KFImage(URL(string: juego.galleryImages[0])!).resizable()
                                     .aspectRatio(contentMode: .fit)
+                                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                                    .padding(.bottom,12)
+                                
                                 
                                 
                                 

@@ -11,6 +11,8 @@ struct ProfileView: View {
     
     
     @State var nombreUsuario:String = "Lorem"
+    @State var imagenPerfil:UIImage = UIImage(named: "perfilEjemplo")!
+    
     
     var body: some View {
        
@@ -24,18 +26,17 @@ struct ProfileView: View {
                     
                   
                     VStack{
-                       
-                        
-                       
+                            
                           
-                                Image("perfilEjemplo").resizable().aspectRatio(contentMode: .fit).frame(width: 80.0, height: 80.0)
-               
+                        Image(uiImage: imagenPerfil ).resizable().aspectRatio(contentMode: .fill)
+                            .frame(width: 180.0, height: 180.0)
+                            .clipShape(Circle())
                         Text(nombreUsuario)
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
                             
 
-                    }.padding(.vertical, 18)
+                    }.padding(EdgeInsets(top: 64, leading: 0, bottom: 32, trailing: 0))
                 
                
                     Text("Ajustes")
@@ -53,7 +54,23 @@ struct ProfileView: View {
             
             perform: {
                 
-               print("revisando si tengo datos en user defaults")
+              //validar cuando no hay foto guardada
+               
+                
+                
+                if returnUiImage(named: "fotoperfil") != nil {
+                    
+                    imagenPerfil = returnUiImage(named: "fotoperfil")!
+    
+                }else{
+                    print("no encontre foto de perfil en base de datos")
+                    
+                }
+                
+                
+                
+                
+                print("revisando si tengo datos en user defaults")
                 
                 if UserDefaults.standard.object(forKey: "datosUsuario") != nil {
                     
@@ -71,6 +88,16 @@ struct ProfileView: View {
         )
        
    }
+    
+    
+    func returnUiImage(named: String) -> UIImage? {
+        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
+        }
+        return nil
+    }
+    
+    
     
 }
 

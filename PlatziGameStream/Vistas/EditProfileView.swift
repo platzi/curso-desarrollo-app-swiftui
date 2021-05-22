@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct EditProfileView: View {
+    
+    @State var imagenPerfil: Image? = Image("perfilEjemplo")
+   @State var isCameraActive = false
+    
     var body: some View {
         ZStack {
             
@@ -15,16 +19,22 @@ struct EditProfileView: View {
             
             ScrollView{
                     
-                  
+               
+                
                     VStack(alignment: .center){
                        
                         
-                            
                         
-                        Button(action: {}, label: {
+                        
+                        Button(action: {isCameraActive = true}, label: {
                             ZStack{
                                 
-                                Image("perfilEjemplo").resizable().aspectRatio(contentMode: .fit).frame(width: 80.0, height: 80.0)
+                                imagenPerfil!.resizable().aspectRatio(contentMode: .fill)
+                                    .frame(width: 118.0, height: 118.0)
+                                    .clipShape(Circle())
+                                    .sheet(isPresented: $isCameraActive, content: {
+                                    SUImagePickerView(sourceType: .camera , image: self.$imagenPerfil, isPresented: $isCameraActive)
+                                })
                                 
                                 Image(systemName: "camera").foregroundColor(.white)
                
@@ -36,7 +46,7 @@ struct EditProfileView: View {
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
 
-                    }.padding(.vertical, 63.0)
+                    }.padding(.bottom,18)
                     
                   ModuloEditar()
             }
