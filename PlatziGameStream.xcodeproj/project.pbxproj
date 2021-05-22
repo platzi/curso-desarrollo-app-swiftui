@@ -269,7 +269,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PlatziGameStream/Preview Content\"";
-				DEVELOPMENT_TEAM = 5Y2A2F444P;
+				DEVELOPMENT_TEAM = PR2KB3T2YF;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PlatziGameStream/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -277,7 +277,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.platzi.PlatziGameStream;
+				PRODUCT_BUNDLE_IDENTIFIER = com.platziteam.PlatziGameStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -291,7 +291,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PlatziGameStream/Preview Content\"";
-				DEVELOPMENT_TEAM = 5Y2A2F444P;
+				DEVELOPMENT_TEAM = PR2KB3T2YF;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PlatziGameStream/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -299,7 +299,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.platzi.PlatziGameStream;
+				PRODUCT_BUNDLE_IDENTIFIER = com.platziteam.PlatziGameStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
