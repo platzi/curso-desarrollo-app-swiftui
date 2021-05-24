@@ -306,7 +306,10 @@ struct RegistroView: View {
                         .frame( maxWidth: .infinity, alignment: .center)
                         .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18))
                         .overlay(
-                            RoundedRectangle(cornerRadius: 6).stroke(Color("Dark-Cyan"), lineWidth: 3).shadow(color: Color("Dark-Cyan"), radius: 6))
+                            RoundedRectangle(cornerRadius: 6)
+                            .stroke(Color("Dark-Cyan"), lineWidth: 3)
+                            .shadow(color: Color("Dark-Cyan"), radius: 6)
+                                )
    
                        
                 }.padding(.bottom)
