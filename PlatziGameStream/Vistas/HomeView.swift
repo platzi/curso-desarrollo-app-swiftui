@@ -379,7 +379,7 @@ struct SubModuloHome:View {
             }
             
           
-            // para agregar insets a scrollview
+            // para agregar insets a scrollview y este más arriba (hay más opciones, por mientras un color)
             Color.clear.frame(width: 1, height: 8, alignment: .center)
             
             
