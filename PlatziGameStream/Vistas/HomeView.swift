@@ -153,11 +153,7 @@ struct Home:View {
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
         
         
-       
-        
-        
-        
-        
+ 
         
     }
     
@@ -184,9 +180,16 @@ struct SubModuloHome:View {
     
     var body: some View{
         
+        
+      //1
         VStack{
+           
+          //2
             
-            Text("LOS MÁS POPULARES").font(.title3).foregroundColor(.white).bold().frame(minWidth: 0, maxWidth: .infinity,alignment: .leading)
+            Text("LOS MÁS POPULARES")
+                .font(.title3)
+                .foregroundColor(.white).bold()
+                .frame(minWidth: 0, maxWidth: .infinity,alignment: .leading)
                 .padding(.top)
             
             ZStack{
@@ -216,8 +219,16 @@ struct SubModuloHome:View {
                 
                 Image(systemName: "play.circle.fill").resizable().foregroundColor(.white).frame(width: 42.0, height: 42.0)
                 
-            }.frame(minWidth: 0, maxWidth: .infinity,alignment: .center)
+                
+                
+                
+            }
+            .frame(minWidth: 0, maxWidth: .infinity,alignment: .center)
             .padding(.vertical)
+            
+           
+            
+          //3
             
             
             Text("CATEGORÍAS SUGERIDAS PARA TI").font(.title3).foregroundColor(.white).bold().frame(minWidth: 0, maxWidth: .infinity,alignment: .leading)
@@ -236,7 +247,10 @@ struct SubModuloHome:View {
                                 .fill(Color("Blue-Gray"))
                                 .frame(width: 160, height: 90)
                             
-                            Image("FPS").resizable().scaledToFit().frame(width: 42, height: 42)
+                            Image("FPS")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 42, height: 42)
                             
                             
                             
@@ -276,7 +290,13 @@ struct SubModuloHome:View {
                         
                     })
                 }
+                
+                
+                
             }
+            
+          
+       //4
             
             Text("RECOMENDADOS PARA TI").font(.title3).foregroundColor(.white).bold().frame(minWidth: 0, maxWidth: .infinity,alignment: .leading)
             
@@ -326,7 +346,19 @@ struct SubModuloHome:View {
                     })
                 }
             }
+          
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+           // NO
             
             
             Text("VIDEOS QUE PODRIAN GUSTARTE").font(.title3).foregroundColor(.white).bold().frame(minWidth: 0, maxWidth: .infinity,alignment: .leading)
@@ -385,9 +417,13 @@ struct SubModuloHome:View {
             
         }
       
+       
+        //5
         
         NavigationLink(
-            destination: VideoPlayer(player: AVPlayer(url:  URL(string: url)!)).frame(width: 400, height: 300)
+            destination: VideoPlayer(player:
+                    AVPlayer(url:  URL(string: url)!))
+                    .frame(width: 400, height: 300)
                 ,
             isActive: $isPlayerActive,
             label: {
