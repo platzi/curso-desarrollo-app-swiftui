@@ -15,7 +15,7 @@ struct HomeView: View {
     
     var body: some View {
         
- 
+        
                
                 TabView(selection:$tabSeleccionado) {
                    
@@ -167,12 +167,12 @@ struct Home:View {
         print("Buscando video que contenga \(textoBusqueda)")
     }
     
-    func navegarVideoPLayerView(videoUrl:String){
-        
-        
-        
-        
-    }
+//    func navegarVideoPLayerView(videoUrl:String){
+//
+//
+//
+//
+//    }
     
 }
 
