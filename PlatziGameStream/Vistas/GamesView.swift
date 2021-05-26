@@ -14,7 +14,8 @@ struct GamesView:View {
     var body: some View{
         
         
-        Text("Hola desde GamesView").navigationBarHidden(true).navigationBarBackButtonHidden(true).onAppear(perform: {
+        Text("Hola desde GamesView").navigationBarHidden(true).navigationBarBackButtonHidden(true)
+            .onAppear(perform: {
             
             //Muestra la información del primer elemento del json
             print("Primer elemento del json: \(todosLosVideojuegos.gamesInfo[0])")
