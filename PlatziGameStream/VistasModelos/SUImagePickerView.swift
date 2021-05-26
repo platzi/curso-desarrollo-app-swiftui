@@ -43,10 +43,12 @@ class ImagePickerViewCoordinator: NSObject, UINavigationControllerDelegate, UIIm
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+       
+             //Modifique nombre contante
         if let UiImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.image = Image(uiImage: UiImage)
             
-            //Guardar Imagen en disco:
+            //Agregue Guardar Imagen en disco:
            
             if let data = UiImage.pngData() {
                 // Create URL
