@@ -28,7 +28,9 @@ struct ProfileView: View {
                         
                        
                           
-                                Image("perfilEjemplo").resizable().aspectRatio(contentMode: .fit).frame(width: 80.0, height: 80.0)
+                                Image("perfilEjemplo").resizable().aspectRatio(contentMode: .fill)
+                                    .frame(width: 118.0, height: 118.0)
+                                    .clipShape(Circle())
                
                         Text(nombreUsuario)
                             .fontWeight(.bold)
