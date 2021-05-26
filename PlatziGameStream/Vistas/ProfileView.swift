@@ -37,7 +37,7 @@ struct ProfileView: View {
                             .foregroundColor(Color.white)
                             
 
-                    }.padding(.vertical, 18)
+                    }.padding(EdgeInsets(top: 64, leading: 0, bottom: 32, trailing: 0))
                 
                
                     Text("Ajustes")
