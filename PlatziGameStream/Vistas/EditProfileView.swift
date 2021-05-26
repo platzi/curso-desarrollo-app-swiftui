@@ -38,7 +38,7 @@ struct EditProfileView: View {
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
 
-                    }.padding(.vertical, 63.0)
+                    }.padding(.bottom, 18.0)
                     
                   ModuloEditar()
             }
