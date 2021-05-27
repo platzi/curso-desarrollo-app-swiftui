@@ -13,15 +13,15 @@ struct FavoritesView:View {
     
     @ObservedObject var todosLosVideojuegos = ViewModel()
 
-    @State var isGameViewActive:Bool = false
-    @State var url:String = ""
-    @State var titulo:String = ""
-    @State var studio:String = ""
-    @State var calificacion:String = ""
-    @State var anoPublicacion:String = ""
-    @State var descripcion:String = ""
-    @State var tags:[String] = [""]
-    @State var imgsUrl:[String] = [""]
+//    @State var isGameViewActive:Bool = false
+//    @State var url:String = ""
+//    @State var titulo:String = ""
+//    @State var studio:String = ""
+//    @State var calificacion:String = ""
+//    @State var anoPublicacion:String = ""
+//    @State var descripcion:String = ""
+//    @State var tags:[String] = [""]
+//    @State var imgsUrl:[String] = [""]
     
     
     
@@ -80,10 +80,7 @@ struct FavoritesView:View {
                 
             }.padding(.horizontal,6)
             
-            
-            
-            
-            
+  
         }.navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
         
