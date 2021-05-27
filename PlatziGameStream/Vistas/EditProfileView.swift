@@ -34,9 +34,7 @@ struct EditProfileView: View {
                             }
                         })
                         
-                        Text("Elije una foto de perfíl")
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
+                        
 
                     }.padding(.bottom, 18.0)
                     

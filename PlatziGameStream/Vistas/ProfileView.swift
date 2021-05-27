@@ -51,7 +51,7 @@ struct ProfileView: View {
             }
             
          
-        } .onAppear(
+        }.onAppear(
             
             perform: {
                 
@@ -88,18 +88,28 @@ struct ModuloAjustes:View {
         VStack{
                  
             Button(action: {}, label: {
-                    HStack { Text("Cuenta")
+                    HStack {
+                    
+                    Text("Cuenta")
                     .foregroundColor(Color.white)
                     Spacer()
                     Text(">")
-                        .foregroundColor(Color.white)}.padding()
-            }) .background(Color("Blue-Gray"))
+                        .foregroundColor(Color.white)
+                        
+                    }.padding()
+                
+            })
+            
+            .background(Color("Blue-Gray"))
             .clipShape(RoundedRectangle(cornerRadius: 1.0)).padding(.horizontal, 8.0)
             
             Button(action: {}, label: {
-                    HStack { Text("Notificaciones")
+                    HStack {
+                        
+                    Text("Notificaciones")
                     .foregroundColor(Color.white)
-                    Spacer()
+                    
+                        Spacer()
                     
                         Toggle("", isOn: $isToggleOn)
                     
@@ -108,21 +118,30 @@ struct ModuloAjustes:View {
             .clipShape(RoundedRectangle(cornerRadius: 1.0)).padding(.horizontal, 8.0)
             
             Button(action: {isEditProfileViewActive = true}, label: {
-                    HStack { Text("Editar Perfil")
+                    HStack {
+                        
+                    Text("Editar Perfil")
                     .foregroundColor(Color.white)
                     Spacer()
+                    
                     Text(">")
                         .foregroundColor(Color.white)}.padding()
+                
             }) .background(Color("Blue-Gray"))
             .clipShape(RoundedRectangle(cornerRadius: 1.0)).padding(.horizontal, 8.0)
             
            
             Button(action: {}, label: {
-                    HStack { Text("Califica esta aplicación")
+                    HStack {
+                        
+                        Text("Califica esta aplicación")
                     .foregroundColor(Color.white)
-                    Spacer()
-                    Text(">")
+                    
+                        Spacer()
+                    
+                        Text(">")
                         .foregroundColor(Color.white)}.padding()
+                
             }) .background(Color("Blue-Gray"))
             .clipShape(RoundedRectangle(cornerRadius: 1.0)).padding(.horizontal, 8.0)
                 
