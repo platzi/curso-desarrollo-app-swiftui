@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3611EF252669D91200511EF3 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3611EF242669D91200511EF3 /* Kingfisher */; };
 		3611EF272669DA9A00511EF3 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3611EF262669DA9A00511EF3 /* GameView.swift */; };
+		3611EF292669EA8400511EF3 /* SearchGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3611EF282669EA8400511EF3 /* SearchGame.swift */; };
 		36B7CFE2264E5588004C19E5 /* GamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7CFE1264E5588004C19E5 /* GamesView.swift */; };
 		36B7CFE5264E55DB004C19E5 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7CFE4264E55DB004C19E5 /* Model.swift */; };
 		36B7CFE8264E5627004C19E5 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7CFE7264E5627004C19E5 /* ViewModel.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		3611EF262669DA9A00511EF3 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		3611EF282669EA8400511EF3 /* SearchGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGame.swift; sourceTree = "<group>"; };
 		36B7CFE1264E5588004C19E5 /* GamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesView.swift; sourceTree = "<group>"; };
 		36B7CFE4264E55DB004C19E5 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		36B7CFE7264E5627004C19E5 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				36B7CFE7264E5627004C19E5 /* ViewModel.swift */,
+				3611EF282669EA8400511EF3 /* SearchGame.swift */,
 			);
 			path = VistasModelos;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				36B7CFE5264E55DB004C19E5 /* Model.swift in Sources */,
 				36DE2C6F264E4CC600DCEF51 /* HomeView.swift in Sources */,
 				36DBAC54264C8D6300996156 /* ContentView.swift in Sources */,
+				3611EF292669EA8400511EF3 /* SearchGame.swift in Sources */,
 				36B7CFE2264E5588004C19E5 /* GamesView.swift in Sources */,
 				36B7CFE8264E5627004C19E5 /* ViewModel.swift in Sources */,
 				36DBAC52264C8D6300996156 /* PlatziGameStreamApp.swift in Sources */,

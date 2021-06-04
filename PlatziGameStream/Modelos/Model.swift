@@ -8,6 +8,14 @@
 import Foundation
 
 
+struct Resultados:Codable {
+    
+    
+    var results:[Game]
+    
+}
+
+
 //Cumplimos con el protocolo Codable para poder codificar y decodificar objetos JSON a tipos que swift pueda comprender y utilizar.
 
 struct Games:Codable {
