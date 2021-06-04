@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVKit
+import Kingfisher
 
 struct GameView: View {
     
@@ -37,7 +38,7 @@ struct GameView: View {
                     videoInfo(titulo:titulo,studio:studio,calificacion:calificacion,anoPublicacion:anoPublicacion,descripcion:descripcion,tags:tags)
                         .padding(.bottom)
                
-                    
+                    Gallery(imgsUrl:imgsUrl)
                 
                 
                 }.frame( maxWidth: .infinity)
@@ -150,6 +151,68 @@ struct videoInfo:View {
         
     }
 }
+
+struct Gallery:View {
+    
+    
+    var imgsUrl:[String]
+    
+    let formaGrid = [
+    
+        GridItem(.flexible())
+    
+    ]
+    
+    
+    var body: some View{
+        
+        
+        
+        VStack(alignment:.leading ){
+           
+           Text("GALERÍA")
+            .foregroundColor(.white)
+            .font(.title)
+            .padding(.leading)
+            
+            
+            ScrollView(.horizontal){
+              
+                LazyHGrid(rows:formaGrid,spacing:8){
+                    
+                    
+                    ForEach(imgsUrl,id: \.self){
+                        
+                       imgUrl in
+                        
+                       //Deplegar imagenes del servidor por medio de url
+                        
+                        KFImage(URL(string: imgUrl))
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                        
+                    }
+                    
+                    
+                    
+                }
+                
+                
+                
+                
+            }.frame( height: 180)
+            
+            
+            
+            
+            
+        }.frame( maxWidth: .infinity, alignment: .leading)
+        
+        
+        
+    }
+}
+
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
