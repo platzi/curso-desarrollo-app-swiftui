@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct GameView: View {
     
@@ -26,13 +27,127 @@ struct GameView: View {
             Color("Marine").ignoresSafeArea()
            
             VStack {
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                video(url: url).frame(height:300)
+                
+                
+                ScrollView {
+                
+                   //Informacion Video
+                   
+                    videoInfo(titulo:titulo,studio:studio,calificacion:calificacion,anoPublicacion:anoPublicacion,descripcion:descripcion,tags:tags)
+                        .padding(.bottom)
+               
+                    
+                
+                
+                }.frame( maxWidth: .infinity)
             }
       
         }
    
     
     
+    }
+}
+
+struct video:View {
+    
+    var url:String
+    
+    var body: some View{
+        
+        VideoPlayer(player: AVPlayer(url: URL(string: url)!)).ignoresSafeArea()
+        
+        
+        
+    }
+    
+    
+    
+}
+
+
+struct videoInfo:View {
+    
+    var titulo:String
+    var studio:String
+    var calificacion:String
+    var anoPublicacion:String
+    var descripcion:String
+    var tags:[String]
+    
+    
+    
+    var body: some View{
+        
+        
+        
+        VStack(alignment:.leading ){
+            
+          Text("\(titulo)")
+            .foregroundColor(.white)
+            .font(.largeTitle)
+            .padding(.leading)
+            
+            HStack{
+                
+                
+                Text("\(studio)")
+                    .foregroundColor(.white)
+                    .font(.subheadline)
+                    .padding(.top,5)
+                    .padding(.leading)
+                
+                Text("\(calificacion)")
+                    .foregroundColor(.white)
+                    .font(.subheadline)
+                    .padding(.top,5)
+                
+                Text("\(anoPublicacion)")
+                    .foregroundColor(.white)
+                    .font(.subheadline)
+                    .padding(.top,5)
+                
+                
+                
+            }
+            
+           Text("\(descripcion)")
+                .foregroundColor(.white)
+                .font(.subheadline)
+                .padding(.top,5)
+                .padding(.leading)
+            
+            
+            HStack{
+                
+                
+                ForEach(tags, id:\.self){
+                    
+                    tag in
+                    
+                    Text("#\(tag)")
+                        .foregroundColor(.white)
+                        .font(.subheadline)
+                        .padding(.top,4)
+                        .padding(.leading)
+                    
+                    
+                    
+                }
+                
+                
+                
+            }
+            
+            
+            
+            
+        }.frame( maxWidth: .infinity,  alignment: .leading)
+        
+        
+        
+        
     }
 }
 
