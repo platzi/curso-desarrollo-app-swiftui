@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct GamesView:View {
     
@@ -65,13 +66,18 @@ struct GamesView:View {
                      
                                 print("Pulse el juego \(titulo)")
                                 
-                               
+                                gameviewIsActive = true
                                 
                                 
                             }, label: {
                                 
                                 
-                                Text("\(juego.title)")
+                                KFImage(URL(string: juego.galleryImages[0])!)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipShape(RoundedRectangle.init(cornerRadius: 4))
+                                
+                                    .padding(.bottom,12)
                                 
                                 
                             
@@ -98,16 +104,7 @@ struct GamesView:View {
             }.padding(.horizontal,6)
             
             
-            
-            
-            
-            
-           
-            
-            
-            
-            
-            
+  
             
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
             .onAppear(perform: {
