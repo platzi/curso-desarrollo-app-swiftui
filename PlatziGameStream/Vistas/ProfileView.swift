@@ -31,6 +31,8 @@ struct ProfileView: View {
                         Image(uiImage: imagenPerfil ).resizable().aspectRatio(contentMode: .fill)
                             .frame(width: 180.0, height: 180.0)
                             .clipShape(Circle())
+                      
+                        
                         Text(nombreUsuario)
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
@@ -91,8 +93,12 @@ struct ProfileView: View {
     
     
     func returnUiImage(named: String) -> UIImage? {
+       
+        
         if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+            
             return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
+        
         }
         return nil
     }

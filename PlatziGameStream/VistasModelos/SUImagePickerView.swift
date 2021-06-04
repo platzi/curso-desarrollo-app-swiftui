@@ -68,7 +68,6 @@ class ImagePickerViewCoordinator: NSObject, UINavigationControllerDelegate, UIIm
             
         }
         
-       
         
         //cerrar vista de camara o libreria
         self.isPresented = false

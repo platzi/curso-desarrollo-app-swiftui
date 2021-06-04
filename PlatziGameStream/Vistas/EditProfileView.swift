@@ -24,7 +24,7 @@ struct EditProfileView: View {
                     VStack(alignment: .center){
                        
                         
-//                        SUImagePickerView(sourceType: .photoLibrary , image: self.$imagenPerfil, isPresented: $isCameraActive)
+                        SUImagePickerView(sourceType: .photoLibrary , image: self.$imagenPerfil, isPresented: $isCameraActive)
                         
                         Button(action: {isCameraActive = true}, label: {
                             ZStack{
@@ -33,7 +33,7 @@ struct EditProfileView: View {
                                     .frame(width: 118.0, height: 118.0)
                                     .clipShape(Circle())
                                     .sheet(isPresented: $isCameraActive, content: {
-                                        SUImagePickerView(sourceType: .photoLibrary , image: self.$imagenPerfil, isPresented: $isCameraActive)
+                                        SUImagePickerView(sourceType: .camera , image: self.$imagenPerfil, isPresented: $isCameraActive)
                                 })
                                 
                                 Image(systemName: "camera").foregroundColor(.white)
