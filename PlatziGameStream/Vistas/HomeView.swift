@@ -206,7 +206,6 @@ struct SubModuloHome:View {
                         Text("The Witcher 3: Wild Hunt").frame(minWidth: 0,  maxWidth: .infinity,  alignment: .leading).background(Color("Blue-Gray"))
                         
                         
-                        
                     }
                     
                     
