@@ -13,6 +13,7 @@ struct Resultados:Codable {
     
     var results:[Game]
     
+    
 }
 
 
