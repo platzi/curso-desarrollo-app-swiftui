@@ -112,7 +112,7 @@ struct InicioSesiónView: View {
                 
                 
                 ZStack(alignment: .leading){
-                    if contraseña.isEmpty { Text("Introduce tu contraseña").font(.caption).foregroundColor(Color(red: 174/255, green: 177/255, blue: 185/255, opacity: 1.0)) }
+                    if contraseña.isEmpty { Text("Escribe tu contraseña").font(.caption).foregroundColor(Color(red: 174/255, green: 177/255, blue: 185/255, opacity: 1.0)) }
                     
                     SecureField("", text: $contraseña).foregroundColor(.white)
                     
@@ -365,6 +365,7 @@ struct RegistroView: View {
         //logica de tomar fotos.
     }
     
+    //Puede llamarse como gustes, ya sea registrate o registrarse, el punto es que sea una acción.
     func registrarse()  {
         
         print("Me registro con el correo \(correo), la contraseña \(contraseña) y confirmación de contraseña \(confirmacionContraseña)")
