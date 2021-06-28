@@ -61,7 +61,7 @@ class ImagePickerViewCoordinator: NSObject, UINavigationControllerDelegate, UIIm
 
 
                 } catch {
-                    print("No Pude Guardar en folder (\(error))")
+                    print("No Pude Guardar fotografia en el folder del dispositivo(\(error))")
                 }
             }
             
