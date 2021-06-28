@@ -51,8 +51,10 @@ struct InicioYRegistroView:View {
                 
                 Button("INICIAR SESIÓN"){
                     
-                    print("Pantalla Inicio sesion")
+                    
                     tipoInicioSesion = true
+                    
+                    print("Pantalla Inicio sesion")
                 }
                 .foregroundColor(tipoInicioSesion ? .white : .gray)
                 
@@ -60,8 +62,10 @@ struct InicioYRegistroView:View {
                 
                 Button("REGÍSTRATE"){
                     
-                    print("Pantalla Registro")
+                    
                     tipoInicioSesion = false
+                    
+                    print("Pantalla Registro")
                 }.foregroundColor(tipoInicioSesion ? .gray : .white)
                 
                 Spacer()
@@ -89,9 +93,9 @@ struct InicioSesiónView: View {
         
         
       
-        Text("Pantalla de Inicio de Sesión")
-            .foregroundColor(Color.white)
-            .padding()
+        Text("Soy la vista de Inicio de Sesión")
+           // .foregroundColor(Color.white)
+          //  .padding()
         
     }
     
@@ -105,9 +109,9 @@ struct RegistroView: View {
     var body: some View {
         
        
-            Text("Pantalla de Registro")
-                .foregroundColor(Color.white)
-                .padding()
+            Text("Soy la vista de Registro")
+                //.foregroundColor(Color.white)
+                //.padding()
         
         
     }
