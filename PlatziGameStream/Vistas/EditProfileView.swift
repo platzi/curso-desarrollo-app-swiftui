@@ -119,11 +119,13 @@ struct ModuloEditar:View {
     }
     
     func actualizarDatos()  {
-        let objetoActualizadorDatos = SaveData()
         
-        let resultado = objetoActualizadorDatos.guardarDatos(correo: correo, contrasena: contraseña, nombre: nombre)
         
-        print("Se guardaron los datos con exito?: \(resultado)")
+
+        
+  print("Guardando y recuperando datos del usuario")
+        
+        
     }
 }
 

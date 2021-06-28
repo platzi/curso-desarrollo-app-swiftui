@@ -216,7 +216,9 @@ struct InicioSesiónView: View {
         if objetoDatosUsuario.validar(correo: correo, contrasena: contraseña){
             isPantallaHomeActive.toggle()
         }else{
-            //isPantallaHomeActive.toggle()
+            
+            //Comenta la linea de abajo si quieres la funcionalidad de validacion de usuario.
+            isPantallaHomeActive.toggle()
             print("Tus datos son incorrectos")
             
         }
@@ -432,17 +434,4 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
-/*Branches
- //1.- Branch 01 (modulosPyramidOfDoom): UI de primer parte de la pantalla de iniciar sesion (Imagen logo + botones "Iniciar sesion" y "Registro" )
- 
- //2.- Branch 02 (pantallaInicioSesion): UI de pantalla de Inicio de Sesión completa
- 
- //3.- Branch 03 (pantallaRegistro): UI de pantalla de Inicio de Registro completa
- 
- //4.- Branch 04 (PantallaHome): UI de pantalla Home
- 
- 
- //5.- Branch 05 (IntroduccionMVVM) : Añadidos archivos Model.swift - ViewModel.swift, implementacion de recuperacion de datos json.
- 
- 
- */
+
