@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GamesView:View {
     
-    @ObservedObject var todosLosVideojuegos = ViewModel()
+    
     
     var body: some View{
         
@@ -18,8 +18,8 @@ struct GamesView:View {
             .onAppear(perform: {
             
             //Muestra la información del primer elemento del json
-            print("Primer elemento del json: \(todosLosVideojuegos.gamesInfo[0])")
-            print("Titulo del primer elemento del json: \(todosLosVideojuegos.gamesInfo[0].title)")
+            print("Primer elemento del json:")
+            print("Titulo del primer elemento del json:")
         })
         
     }
