@@ -216,7 +216,9 @@ struct InicioSesiónView: View {
         if objetoDatosUsuario.validar(correo: correo, contrasena: contraseña){
             isPantallaHomeActive.toggle()
         }else{
-            //isPantallaHomeActive.toggle()
+            
+            //comentar la linea de abajo para deshabilitar validacion de usuario
+            isPantallaHomeActive.toggle()
             print("Tus datos son incorrectos")
             
         }
