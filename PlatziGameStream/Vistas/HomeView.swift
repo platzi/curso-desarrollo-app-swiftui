@@ -53,12 +53,7 @@ struct HomeView: View {
                             Text("Favoritos")
                         }.tag(3)
                     
-                    Text("Buscar")
-                        .font(.system(size: 30, weight: .bold, design: .rounded))
-                        .tabItem {
-                            Image(systemName: "magnifyingglass")
-                            Text("Buscar")
-                        }.tag(4)
+                   
     
                  
                     
@@ -163,12 +158,7 @@ struct Home:View {
         print("Buscando video que contenga \(textoBusqueda)")
     }
     
-//    func navegarVideoPLayerView(videoUrl:String){
-//
-//
-//
-//
-//    }
+
     
 }
 
