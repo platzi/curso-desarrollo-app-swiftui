@@ -39,80 +39,26 @@ struct ContentView: View {
 
 struct InicioYRegistroView:View {
     
-    @State var tipoInicioSesion:Bool = true
+    
     
     var body: some View{
         
         VStack{
             
             HStack{
+                Text("INICIA SESION")
+                Text("REGÍSTRATE")
                 
-                Spacer()
-                
-                Button("INICIAR SESIÓN"){
-                    
-                    print("Pantalla Inicio sesion")
-                    tipoInicioSesion = true
-                }
-                .foregroundColor(tipoInicioSesion ? .white : .gray)
-                
-                Spacer()
-                
-                Button("REGÍSTRATE"){
-                    
-                    print("Pantalla Registro")
-                    tipoInicioSesion = false
-                }.foregroundColor(tipoInicioSesion ? .gray : .white)
-                
-                Spacer()
             }
             
             
-            Spacer(minLength: 42)
-            
-            
-            if(tipoInicioSesion){
-                InicioSesiónView()
-            }else{
-                RegistroView()
-            }
             
         }
         
     }
 }
 
-struct InicioSesiónView: View {
-    
-   
-    var body: some View {
-        
-        
-      
-        Text("Pantalla de Inicio de Sesión")
-            .foregroundColor(Color.white)
-            .padding()
-        
-    }
-    
-    
-    
-    
-    
-}
 
-struct RegistroView: View {
-    var body: some View {
-        
-       
-            Text("Pantalla de Registro")
-                .foregroundColor(Color.white)
-                .padding()
-        
-        
-    }
-    
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -123,15 +69,5 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
-/*Branches
- //1.- Branch 01 (pantallaModulos): UI de primer parte de la pantalla de iniciar sesion (Imagen logo + botones "Iniciar sesion" y "Registro" )
- 
 
- 
- 
-
- 
- 
- 
- */
 
