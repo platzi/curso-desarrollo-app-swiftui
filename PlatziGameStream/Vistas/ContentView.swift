@@ -221,7 +221,8 @@ struct InicioSesiónView: View {
         if objetoDatosUsuario.validar(correo: correo, contrasena: contraseña){
             isPantallaHomeActive.toggle()
         }else{
-            //isPantallaHomeActive.toggle()
+            //Comentar linea de abajo para habilitar funcionalidad de validacion de usuario.
+            isPantallaHomeActive.toggle()
             print("Tus datos son incorrectos")
             
         }
